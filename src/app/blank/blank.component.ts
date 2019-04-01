@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { InnitService } from '../services/innit.service';
 
 
 @Component({
@@ -10,10 +8,8 @@ import { InnitService } from '../services/innit.service';
 })
 export class BlankComponent implements OnInit {
 
-  constructor( private router: Router, private innitService: InnitService) { }
+  constructor() { }
 
   ngOnInit() {
-    console.log(this.innitService.route);
-    this.router.navigate([`${this.innitService.route}`]);
   }
 }

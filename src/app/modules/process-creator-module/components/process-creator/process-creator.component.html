@@ -1,9 +1,0 @@
-<div class= "margin-20px text-center ">
-      <app-element *ngFor='let element of module.structure.element' [element]= "element" [disabled]="disabled" (buttonEmitter)= "onButtonClick($event[0], $event[1])">
-      </app-element>
-
-  <input type="button" class="main-button btn btn-primary btn-block" value="Go Back"type="submit" (click) = 'goBack()'>
-  <input type="button" class="main-button btn btn-primary btn-block" value="Create Inspection"type="submit" (click) = 'createInspection()'>
-</div>
-
-<app-menu-bar></app-menu-bar>
