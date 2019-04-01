@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule,  } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -9,13 +10,15 @@ import { appRoutes } from './routes';
 import { BlankComponent } from './blank/blank.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
+import { DamagelistComponent } from './damagelist/damagelist.component';
 export const metaReducers: MetaReducer<any>[] = [];
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    BlankComponent
+    BlankComponent,
+    DamagelistComponent
   ],
   imports: [
     BrowserModule,
@@ -23,6 +26,7 @@ export const metaReducers: MetaReducer<any>[] = [];
     NoopAnimationsModule,
     appRoutes,
     MaterialModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
