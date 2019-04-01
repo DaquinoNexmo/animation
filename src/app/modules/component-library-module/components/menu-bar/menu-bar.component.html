@@ -1,0 +1,13 @@
+<div class = "contain" #topMenuBar>
+    <div class='box' *ngFor='let element of centerElements'>
+        <app-element (buttonEmitter)="onButtonClick($event[0])" [element]='element'></app-element>
+    </div>
+</div>
+<div class="contain" #bottomMenuBar>
+    <div class='box' *ngFor='let element of leftElements'>
+        <app-element (buttonEmitter)="onButtonClick($event[0])" [element]='element'></app-element>
+    </div>
+    <div class='box' *ngFor='let element of rightElements'>
+        <app-element (buttonEmitter)="onButtonClick($event[0])" [element]='element'></app-element>
+    </div>
+</div>

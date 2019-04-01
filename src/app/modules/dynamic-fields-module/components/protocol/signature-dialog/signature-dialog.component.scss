@@ -1,0 +1,91 @@
+
+main {
+
+    text-align: center;
+
+}
+
+.signature-wrapper {
+    display: inline-block;
+    width: 300px;
+    height: 200px;
+}
+.signature-border {
+    border-width: 0.1px;
+    border-style: solid;
+    margin: 5px auto;
+}
+
+.headline {
+    text-align: center;
+}
+
+.email-input {
+    min-width:300px;
+}
+
+.email-wrapper {
+    min-width:300px;
+    display: block;
+    text-align: center;
+}
+
+.yes-button {
+    text-align: left;
+}
+
+.no-button {
+    float: right;
+}
+
+.close-button{
+
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    button {
+        align-self: flex-end;
+        order: 2;
+        background-color: lightblue;
+        padding: 10px 30px;
+        border: none;
+        cursor: pointer;
+    }
+    h3 {
+        order: 1;
+        align-self: flex-start;
+    }
+    button:hover {
+        background-color: darken(lightblue, 20%)
+    }
+}
+
+.submit-button{
+    display: block;
+    margin: 5px auto;
+}
+
+.title {
+    margin: auto;
+}
+
+
+@media(max-width: 812px) {
+
+    .signature-wrapper {
+        width: 240px;
+        height: 180px;
+    }
+
+    .close-button {
+
+        button {
+
+            padding: 5px 10px;
+            border: none;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+    }
+
+}

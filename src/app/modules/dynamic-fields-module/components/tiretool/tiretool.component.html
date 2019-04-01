@@ -1,0 +1,111 @@
+
+<div class = 'mode-change-buttons'>
+    <div>
+        <button (click) = 'changeState()' [disabled]= 'state === tireToolState.NORMAL'>
+            <mat-icon>favorite</mat-icon>
+        </button>
+        <button (click) = 'changeState()' [disabled]= 'state === tireToolState.SPARE'>
+            <mat-icon>favorite_border</mat-icon>
+        </button>
+    </div>
+
+    <button (click) = 'swapTires()'>
+        <mat-icon>shuffle</mat-icon>
+    </button>
+</div>
+
+<!---------------------------------------------- NORMAL TIRES ---------------------------------------------------->
+
+<div class = 'wrapper' *ngIf='state === tireToolState.NORMAL'>
+    <div class = 'axle' *ngFor= 'let axle of axles; index as i'>
+        <!-- Left exterior tire -->
+        <ng-component [ngTemplateOutlet]="getTireAtPosition('LE' + (i + 1), axle) ? tireNameOnLeft : empty" [ngTemplateOutletContext]="{tire: getTireAtPosition('LE' + (i + 1), axle), axle:axle}">
+
+        </ng-component>
+
+        <!-- Left interior tire -->
+        <ng-component [ngTemplateOutlet]="getTireAtPosition('LI' + (i + 1), axle) ? tireNameOnRight : empty" [ngTemplateOutletContext]="{tire: getTireAtPosition('LI' + (i + 1), axle), axle:axle}">
+
+        </ng-component>
+        <h3 class = 'numberOfAxle'>{{i + 1}}</h3>
+
+        <div id = 'tire-box-right-position' class = 'tire-right'>
+            <!-- Right interior tire -->
+            <ng-component [ngTemplateOutlet]="getTireAtPosition('RI' + (i + 1), axle) ? tireNameOnLeft : empty" [ngTemplateOutletContext]="{tire: getTireAtPosition('RI' + (i + 1), axle), axle:axle}">
+
+            </ng-component>
+
+            <!-- Right exterior tire -->
+            <ng-component [ngTemplateOutlet]="getTireAtPosition('RE' + (i + 1), axle) ? tireNameOnRight : empty" [ngTemplateOutletContext]="{tire: getTireAtPosition('RE' + (i + 1), axle), axle:axle}">
+
+            </ng-component>
+        </div>
+
+        <div class = 'control'>
+            <button (click) = 'changeNumberOfTires(axle)'>
+                <mat-icon *ngIf='axle.length === 4'>star</mat-icon>
+                <mat-icon *ngIf='axle.length === 2'>star_border</mat-icon>
+            </button>
+            <button [disabled] = '(i+1) !== axles.length' (click) = 'removeAxle(axle)'>
+                <mat-icon>delete</mat-icon>
+            </button>
+        </div>
+    </div>
+    <button class="btn mce-btn-large" style = 'text-align: center' (click)='addAxle()'> + </button>
+</div>
+
+<!---------------------------------------------- SPARE AND ADDITIONAL TIRES ---------------------------------------------------->
+<div *ngIf='state === tireToolState.SPARE'>
+    <div id='spare-tires'>
+        <h1> {{'SPARE_TIRES' | Translate}}</h1>
+        <div *ngFor='let tire of spareTires'>
+            <ng-component [ngTemplateOutlet]="tire ? tireNameOnLeft : empty" [ngTemplateOutletContext]="{tire: tire}">
+
+            </ng-component>
+        </div>
+        <button (click) = 'addSpareTire()'>
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+
+    <div id='additional-tires'>
+        <h1> {{'ADDITIONAL_TIRES' | Translate}}</h1>
+        <div *ngFor='let tire of additionalTires'>
+            <ng-component [ngTemplateOutlet]="tire ? tireNameOnLeft : empty" [ngTemplateOutletContext]="{tire: tire}">
+
+            </ng-component>
+        </div>
+        <button (click) = 'addAdditionalTire()'>
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+</div>
+<!---------------------------------------------- TIRE TEMPLATES ---------------------------------------------------->
+<ng-template #tireNameOnLeft let-tire='tire' let-axle='axle'>
+    <div (click) = 'openTirePopup(tire, axle)' class = 'tire-container tire-container-left'>
+        <div class = 'tire-details-left'>
+            <div>{{getManufacturerOfTire(tire)}}</div>
+            <div>{{getMeasureOfTire(tire)}}</div>
+        </div>
+        <div class = 'tire-details'>
+            <div class = 'tire-profile'>{{getProfileOfTire(tire)}}</div>
+            <div class = 'tire-icon' [ngStyle] = "{'background-image': getImage('tire.svg')}"></div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #tireNameOnRight let-tire='tire' let-axle='axle'>
+    <div (click) = 'openTirePopup(tire, axle)' class = 'tire-container'>
+        <div class = 'tire-details'>
+            <div class = 'tire-profile'>{{getProfileOfTire(tire)}}</div>
+            <div class = 'tire-icon' [ngStyle] = "{'background-image': getImage('tire.svg')}"></div>
+        </div>
+        <div class = 'tire-details'>
+            <div>{{getManufacturerOfTire(tire)}}</div>
+            <div>{{getMeasureOfTire(tire)}}</div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #empty>
+</ng-template>

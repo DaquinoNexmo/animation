@@ -1,0 +1,40 @@
+<div class = 'titlebar'>
+    <h3 class = 'title'>
+        <b>{{'TIRE' | Translate}}</b>
+    </h3>
+    <button class = 'close-button' mat-button mat-dialog-close>
+        <mat-icon>close</mat-icon>
+    </button>
+</div>
+
+<div class = 'flex-container'>
+    <div *ngFor='let element of data.module.structure.element'>
+        <app-element (click) = 'openTireMeasurePopup(element.id)'[element] = 'element'></app-element>
+    </div>
+</div>
+
+
+<div class = 'control'>
+    <button (click) = 'copyTireToAxle()' mat-button>
+        <mat-icon >motorcycle</mat-icon>
+    </button>
+
+    <button (click) = 'copyTireToAllAxles()' mat-button>
+        <mat-icon>games</mat-icon>
+    </button>
+
+    <button (click) = 'swapTire()'mat-button>
+        <mat-icon>swap_horiz</mat-icon>
+    </button>
+
+    <button (click) = 'deleteTire()' mat-button>
+        <mat-icon>delete</mat-icon>
+    </button>
+
+</div>
+
+<div class = 'accept-button-wrapper'>
+    <button (click) = 'saveTire()' mat-button class='accept-button'>
+        <mat-icon>done</mat-icon>
+    </button>
+</div>

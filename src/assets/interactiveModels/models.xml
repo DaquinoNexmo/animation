@@ -1,0 +1,322 @@
+﻿<root>
+	<model>
+        <id>anh_krone_azp18_plane</id>
+        <name>Anhänger Krone Plane</name>
+    </model>
+    <model>
+        <id>anh_krone_baustoffanhaenger</id>
+        <name>Baustoffanhänger Krone</name>
+    </model>
+    <model>
+       	<id>anh_krone_loadCarrier_3achs_plane</id>
+	<name>Anhänger Krone Load Carrier 3 Achs</name>
+    </model>
+    <model>
+        <id>anh_krone_azw18_lafette</id>
+        <name>Anhänger Krone Lafette</name>
+    </model>
+    <model>
+        <id>aufl_krone_sdk27_koffer_hub</id>
+        <name>Anhänger Krone Koffer Hub</name>
+    </model>
+    <model>
+        <id>anh_krone_zzb_dolly</id>
+        <name>Anhänger Krone Dolly</name>
+    </model>
+    <model>
+        <id>anh_obermaier_os2l105l_plane</id>
+        <name>Anhänger Obermaier Plane</name>
+    </model>
+    <model>
+        <id>anh_schmitz_awf18_lafette</id>
+        <name>Anhänger Schmitz Lafette</name>
+    </model>
+    <model>
+        <id>aufl_feldbinder_kip603_silo</id>
+        <name>Aufl Feldbinder Silo</name>
+    </model>
+    <model>
+        <id>aufl_goldhoefer_stn_tiefl</id>
+        <name>Aufl Goldhöfer Tief</name>
+    </model>
+    <model>
+        <id>aufl_krone_sdc27_container</id>
+        <name>Aufl Krone Container</name>
+    </model>
+    <model>
+        <id>aufl_krone_sdk27_koffer</id>
+        <name>Aufl Krone Koffer</name>
+    </model>
+    <model>
+        <id>aufl_krone_sdp27_plane</id>
+        <name>Aufl Krone Plane</name>
+    </model>
+	<model>
+        <id>aufl_krone_sdp27_ladebordwand</id>
+        <name>Aufl Krone Ladeboardwand</name>
+    </model>
+	<model>
+        <id>aufl_krone_sdp27_multisteel_incl_bwk</id>
+        <name>Aufl Krone Multisteel Boardwand</name>
+    </model>
+	    <model>
+        <id>aufl_krone_sdr27_coilliner</id>
+        <name>Aufl Krone Coil Liner</name>
+    </model>
+    <model>
+        <id>aufl_krone_sdr27_cool_liner</id>
+        <name>Aufl Krone Cool Liner</name>
+    </model>
+    <model>
+        <id>aufl_schmitz_s01_plane_bwk</id>
+        <name>Aufl Schmitz Plane</name>
+    </model>
+    <model>
+        <id>aufl_schmitz_s01_plane</id>
+        <name>Aufl Schmitz Plane CS5</name>
+    </model>
+    <model>
+        <id>aufl_schmitz_sbu_schubboden</id>
+        <name>Aufl Schmitz Schubboden</name>
+    </model>
+    <model>
+        <id>aufl_schmitz_scf24_container</id>
+        <name>Aufl Schmitz Container</name>
+    </model>
+    <model>
+        <id>aufl_schmitz_ski24_mulde</id>
+        <name>Aufl Schmitz Mulde</name>
+    </model>
+    <model>
+        <id>aufl_schmitz_sko24_kuehl</id>
+        <name>Aufl Schmitz Kühlaufbau</name>
+    </model>
+    <model>
+        <id>bus_man_lions_city_g</id>
+        <name>BUS MAN Lions City G</name>
+    </model>
+    <model>
+        <id>bus_man_lions_city_le</id>
+        <name>BUS MAN Lions City LE</name>
+    </model>
+    <model>
+        <id>lkw_iveco_eurocargo_kuehl</id>
+        <name>LKW Iveco  Eurocargo Kühler</name>
+    </model>
+	<model>
+        <id>lkw_faun_tgs_m_variopress</id>
+        <name>LKW Faun M Variopress</name>
+    </model>
+    <model>
+        <id>lkw_man_tga_xxl_bdf</id>
+        <name>LKW MAN XXL BDF CS5</name>
+    </model>
+    <model>
+        <id>lkw_man_tga_xxl_bdf_koffer</id>
+        <name>LKW MAN XXL BDF Koffer</name>
+    </model>
+    <model>
+        <id>lkw_man_tgl_c_koffer</id>
+        <name>LKW MAN XXL Koffer CS5</name>
+    </model>
+    <model>
+        <id>lkw_man_tgl_l_plane</id>
+        <name>LKW MAN L Plane CS5</name>
+    </model>
+    <model>
+        <id>lkw_man_tgm_c_plane</id>
+        <name>LKW MAN TGM Plane CS5</name>
+    </model>
+    <model>
+        <id>lkw_man_tgs_abrollkipper_m_8x4</id>
+        <name>LKW MAN Abrollkipper 8x4</name>
+    </model>
+    <model>
+        <id>lkw_man_tgs_lx_bdf</id>
+        <name>LKW MAN LX BDF CS5</name>
+    </model>
+    <model>
+        <id>lkw_man_tgs_lx_beton</id>
+        <name>LKW MAN LX Beton CS5</name>
+    </model>
+    <model>
+        <id>lkw_man_tgs_m_dreiseitenkipper</id>
+        <name>LKW MAN M Dreiseitenkipper</name>
+    </model>
+	<model>
+        <id>lkw_man_tgs_muellfahrzeug_zoeller</id>
+        <name>LKW MAN TGS Müllfahrzeug Zöller</name>
+    </model>
+    <model>
+        <id>lkw_man_tgs_m_mulde</id>
+        <name>LKW MAN M Mulde</name>
+    </model>
+    <model>
+        <id>lkw_man_tgx_xl_bdf</id>
+        <name>LKW MAN XL BDF CS5</name>
+    </model>
+    <model>
+        <id>lkw_man_tgx_xxl_volumenzug_plane</id>
+        <name>LKW MAN XXL Volumenzug Plane</name>
+    </model>
+    <model>
+        <id>lkw_man_tgx_xxl_bdf</id>
+        <name>LKW MAN XXL BDF CS5</name>
+    </model>
+    <model>
+        <id>motorrad_yamaha_r6</id>
+        <name>Motorrad Yamaha R6</name>
+    </model>
+    <model>
+        <id>pkw_audi_a4_avant</id>
+        <name>PKW Audi A4 Avant</name>
+    </model>
+    <model>
+        <id>pkw_mb_cls_coupe</id>
+        <name>PKW Mercedes Benz CLS Coupe</name>
+    </model>
+    <model>
+        <id>pkw_mb_eklasse_limousine</id>
+        <name>PKW Mercedes Benz E Klasse Limousine</name>
+    </model>
+    <model>
+        <id>pkw_porsche_911_turbo</id>
+        <name>PKW Porsche 911 Turbo</name>
+    </model>
+    <model>
+        <id>pkw_smart_fortwo</id>
+        <name>PKW Smart For two</name>
+    </model>
+		<model>
+        <id>pkw_vw_caddy_2015</id>
+        <name>PKW Volkswagen Caddy 2015</name>
+    </model>
+    <model>
+        <id>pkw_vw_golf6_limousine</id>
+        <name>PKW Volkswagen Golf 6 Limousine</name>
+    </model>
+    <model>
+        <id>pkw_vw_multivan_tdi</id>
+        <name>PKW Volkswagen Multivan TDI</name>
+    </model>
+    <model>
+        <id>pkw_vw_passat_variant</id>
+        <name>PKW Volkswagen Passat Variant</name>
+    </model>
+    <model>
+        <id>pkw_vw_touareg</id>
+        <name>PKW Volkswagen Touareg</name>
+    </model>
+    <model>
+        <id>szm_daf_xf105_superspacecab</id>
+        <name>SZM DAF XF105 Superspacecab</name>
+    </model>
+    <model>
+        <id>szm_scania_R490</id>
+        <name>SZM Scania R490</name>
+    </model>
+    <model>
+        <id>szm_man_tga_xxl</id>
+        <name>SZM MAN TGA XXL</name>
+    </model>
+    <model>
+        <id>szm_man_tgs_l</id>
+        <name>SZM MAN TGS L</name>
+    </model>
+    <model>
+        <id>szm_man_tgx_xl</id>
+        <name>SZM MAN TGX XL</name>
+    </model>
+    <model>
+        <id>szm_man_tgx_xlx</id>
+        <name>SZM MAN TGX XLX</name>
+    </model>
+    <model>
+        <id>szm_man_tgx_xxl</id>
+        <name>SZM MAN TGX XXL</name>
+    </model>
+    <model>
+        <id>szm_man_tgx_xxl_euro6facelift</id>
+        <name>SZM MAN TGX XXL Euro6Facelift</name>
+    </model>
+    <model>
+        <id>szm_mb_actros_megaspace</id>
+        <name>SZM Actros Megaspace</name>
+    </model>
+    <model>
+        <id>szm_mb_actros_mp4</id>
+        <name>SZM Actros MP4</name>
+    </model>
+    <model>
+        <id>tran_fiat_ducatol1h1_kombi</id>
+        <name>TRAN Fiat Ducatol1h1 Kombi</name>
+    </model>
+	<model>
+        <id>tran_man_tge_crafter</id>
+        <name>TRAN MAN TGE Crafter</name>
+    </model>
+	<model>
+		<id>tran_man_tge_koffer</id>
+    	<name>TRAN MAN TGE Koffer</name>
+  	</model>
+	<model>
+		<id>tran_man_tge_plane</id>
+    	<name>TRAN MAN TGE Plane</name>
+  	</model>
+	<model>
+        <id>tran_man_tge_pritsche</id>
+        <name>TRAN MAN TGE Pritsche</name>
+    </model>
+    <model>
+        <id>tran_mb_sprinter_315cdi</id>
+        <name>TRAN Sprinter 315 CDI</name>
+    </model>
+    <model>
+        <id>tran_mb_sprinter_pritschecdi</id>
+        <name>TRAN Sprinter Pritsche CDI</name>
+    </model>
+    <model>
+        <id>tran_opel_movano</id>
+        <name>TRAN Opel Movano</name>
+    </model>
+    <model>
+        <id>tran_peugeot_jumper</id>
+        <name>TRAN Peugeot Jumper</name>
+    </model>
+    <model>
+        <id>tran_renault_master_kasten</id>
+        <name>TRAN Renault Master Kasten</name>
+    </model>
+    <model>
+        <id>tran_vw_crafter_tdi</id>
+        <name>TRAN Volkswagen Crafter TDI</name>
+    </model>
+    <model>
+        <id>wb_koegel_wko_kuehl</id>
+        <name>WB Kögel WKO Kühlaufbau</name>
+    </model>
+    <model>
+        <id>wb_plane</id>
+        <name>WB Plane</name>
+    </model>
+    <model>
+        <id>wb_plane_ladebordwand</id>
+        <name>WB Plane Ladeboard</name>
+    </model>
+    <model>
+        <id>wb_wecon_koffer_rolltor</id>
+        <name>WB Wecon Koffer Rolltor</name>
+    </model>
+    <model>
+        <id>zm_terberg_bc_182</id>
+        <name>Terberg BC 182</name>
+    </model>
+    <model>
+        <id>zm_terberg_rt_223</id>
+        <name>Terberg RT 223</name>
+    </model>
+    <model>
+        <id>zm_terberg_yt_182</id>
+        <name>Terberg YT 182</name>
+    </model>
+</root>

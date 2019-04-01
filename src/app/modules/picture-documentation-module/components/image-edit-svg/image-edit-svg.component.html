@@ -1,0 +1,72 @@
+<body>
+    <div [ngClass]="{
+        'contain': viewOrientation === 'portrait',
+        'contain_landscape': viewOrientation === 'landscape'
+    }">
+        <h4>Photo editing tool</h4>
+        <div id='item1' class="brightness_control">
+            <button mat-icon-button (click)="brightnessDecrease()">
+                <mat-icon>brightness_high</mat-icon>
+            </button>
+            <mat-slider class="slider" [disabled]="disabled" [invert]="invert" [max]="max" [min]="min" [step]="step"
+                [tickInterval]="tickInterval" [(ngModel)]="value" [vertical]="vertical" (valueChange)=setOpacity()>
+            </mat-slider>
+            <button mat-icon-button (click)="brightnessIncrease()">
+                <mat-icon>brightness_low</mat-icon>
+            </button>
+        </div>
+        <div id="item2">
+            <form class="form">
+                <mat-form-field class="form_input">
+                    <input id='textInput' matInput (change)="getInputValue($event)" [readonly]="isNewImage || !allowInput">
+                </mat-form-field>
+                <mat-radio-group (change)='getRadioValue($event)' value="units" [disabled]="isNewImage || !allowInput || !allowRadio">
+                    <mat-radio-button value="mm">mm</mat-radio-button>
+                    <mat-radio-button value="cm">cm</mat-radio-button>
+                </mat-radio-group>
+
+            </form>
+
+        </div>
+        <!--
+                <canvas #myCanvas id="canvas" width="640" height="480" style="border:1px solid #d3d3d3;">
+                    Your browser does not support the HTML5 canvas tag.
+                </canvas>
+                -->
+        <div id="item3" class="svg_img">
+            <svg #mySvg id="SVG" attr.height.px="{{Height}}" attr.width.px="{{Width}}"> style="border: 1px solid #d3d3d3;">
+            </svg>
+        </div>
+        <div class="button-wraper" id="item4">
+
+            <button mat-icon-button (click)="setShape('arrow')" [disabled]="isNewImage">
+                <mat-icon>arrow_forward</mat-icon>
+            </button>
+            <button mat-icon-button (click)="setShape('rectangle')" [disabled]="isNewImage">
+                <mat-icon>crop_square</mat-icon>
+            </button>
+            <button mat-icon-button (click)="setShape('plane')" [disabled]="isNewImage">
+                <mat-icon>polymer</mat-icon>
+            </button>
+            <button mat-icon-button (click)="setShape('circle')" [disabled]="isNewImage">
+                <mat-icon>trip_origin</mat-icon>
+            </button>
+            <button mat-icon-button (click)="setShape('text')" [disabled]="isNewImage">
+                <mat-icon>text_format</mat-icon>
+            </button>
+            <button mat-icon-button (click)="removeSnap()" [disabled]="isNewImage">
+                <mat-icon>undo</mat-icon>
+            </button>
+            <button mat-icon-button (click)="removeSpecificSnap()" [disabled]="isNewImage">
+                <mat-icon>remove</mat-icon>
+            </button>
+            <button [style.background-color]= 'chosenColor' (click) = "changeColor()">
+                <mat-icon>brush</mat-icon>
+            </button>
+
+
+        </div>
+        <button class="save_button" (click)="saveImage()" id="item5"><span>Save Image</span></button>
+    </div>
+
+</body>

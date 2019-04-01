@@ -1,0 +1,30 @@
+<div>
+
+  <!-- Full-width images with number and caption text -->
+
+  <div *ngIf="images.length > 0">
+    <div class="mySlides">
+      <div *ngIf="images[slideIndex].image64Edit; else newImageBlock">
+
+        <img #image [src]="images[slideIndex].image64Edit" alt="First slide" class="img_carousel">
+      </div>
+      <ng-template #newImageBlock>
+
+        <img #image [src]="images[slideIndex].image64" alt="First slide" class="img_carousel">
+      </ng-template>
+    </div>
+    <button mat-icon-button class="del_slide" (click)="deleteSelectedSlide(images[slideIndex])">
+        <mat-icon>delete_outline</mat-icon>
+    </button>
+    <button mat-icon-button class="edit_slide" (click)="editSelectedImage(images[slideIndex])">
+        <mat-icon>edit</mat-icon>
+    </button>
+
+    <div *ngIf = 'images.length > 1'>
+      <a class="prev" (click)="plusSlides()">&#10094;</a>
+      <a class="next" (click)="minusSlide()">&#10095;</a>
+    </div>
+  </div>
+
+</div>
+

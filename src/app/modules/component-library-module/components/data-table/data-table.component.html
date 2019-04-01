@@ -1,0 +1,107 @@
+<body>
+
+  <section id="data_table">
+    <div class="contain">
+      <table class="table" mat-table #table [dataSource]="dataSource" matSort aria-label="Elements">
+
+        <!-- ###################      PROCESS LIST COLUMNS       ####################################### -->
+        <!-- CreateInspectionDate Column -->
+        <ng-container matColumnDef="createInspectionDate">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Create Inspection Date</th>
+          <td mat-cell *matCellDef="let row">{{row.createInspectionDate | dateConversion}}</td>
+        </ng-container>
+
+        <!-- ProcessDefinition Column -->
+        <ng-container matColumnDef="processDefinition">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Process Definition</th>
+          <td mat-cell *matCellDef="let row">{{row.processDefinition}}</td>
+        </ng-container>
+
+        <!-- OrderTypeFriendlyname Column -->
+        <ng-container matColumnDef="orderTypeFriendlyname">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Order Type</th>
+          <td mat-cell *matCellDef="let row">{{row.orderTypeFriendlyname}}</td>
+        </ng-container>
+
+        <!-- DocumentStatusFriendlyname Column -->
+        <ng-container matColumnDef="documentStatusFriendlyname">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+          <td mat-cell *matCellDef="let row">{{row.documentStatusFriendlyname}}</td>
+        </ng-container>
+
+        <!-- Product Name Column -->
+        <ng-container matColumnDef="productName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Product Name</th>
+          <td mat-cell *matCellDef="let row">{{row.productName}}</td>
+        </ng-container>
+
+        <!-- Info Column -->
+        <ng-container matColumnDef="info">
+          <th mat-header-cell *matHeaderCellDef>Info</th>
+          <td mat-cell *matCellDef="let row"><button (click)='popup($event, row)'>!</button></td>
+        </ng-container>
+
+
+
+        <!-- ###################      VEHICLE COLUMNS       ####################################### -->
+        <!-- VIN Column -->
+        <ng-container matColumnDef="vin">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>VIN</th>
+          <td mat-cell *matCellDef="let row">{{row.vin}}</td>
+        </ng-container>
+
+        <!-- Manufacturer Column -->
+        <ng-container matColumnDef="manufacturer">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Manufacturer</th>
+          <td mat-cell *matCellDef="let row">{{row.manufacturer}}</td>
+        </ng-container>
+
+        <!-- License Column -->
+        <ng-container matColumnDef="license">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>License Nr</th>
+          <td mat-cell *matCellDef="let row">{{row.license}}</td>
+        </ng-container>
+
+        <!-- Fleet Number Column -->
+        <ng-container matColumnDef="fleetNr">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Fleet Nr</th>
+          <td mat-cell *matCellDef="let row">{{row.fleetNr}}</td>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+        <div *ngIf='dataSource.data'>
+          <tr class = 'cursor' mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selectedRow(row)"></tr>
+        </div>
+      </table>
+      <div class='page-change-button'>
+
+        <button class='btn btn-primary' (click)='goBackwards()'>
+          <b><</b>
+        </button>
+
+        <button class='btn btn-primary' (click)='goForwards()'>
+          <b>></b>
+        </button>
+
+        <button class='btn btn-primary refresh-button' (click)='refresh()'>
+          Refresh
+        </button>
+
+        <!--
+        <div *ngIf='filters[0]' class="app-element-inputs">
+          <app-element [isFilter]='true' [element]='{type: "comboBox", id: moduleName+"."+moduleName+".filter", label: {translation: true, text: "SELECT_FILTER"} , options: filters, displayname: "name" }'></app-element>
+          <app-element (buttonEmitter)= 'refresh($event[0], $event[1])' [element]='{type: "buttonWithInput", id: moduleName+"."+moduleName+".filterValue" , label: {translation: true, text: "FILTER_VALUE"} ,buttonLabel: "Search" }'></app-element>
+        </div>
+        -->
+      </div>
+      <label>Items: {{dataSource.startIndex + 1}} to {{dataSource.startIndex + dataSource.data?.length}} out of
+        {{dataSource.totalCount}}</label>
+    </div>
+
+  </section>
+  <footer>
+
+  </footer>
+</body>

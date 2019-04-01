@@ -1,0 +1,57 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+
+# compiled output
+/dist
+/dist-server
+/tmp
+/out-tsc
+/.svn
+
+# cordova script
+android.bat
+
+# dependencies
+/node_modules
+!/src/assets
+/src/assets/*
+!/src/assets/db
+!/src/assets/interactiveModels
+!/src/assets/languages
+!/src/assets/my_S_VWV_TUV_v2.9.xml
+!/src/assets/*.zip
+!/src/assets/icons
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+
+# e2e
+/e2e/*.js
+/e2e/*.map
+
+# System Files
+.DS_Store
+Thumbs.db

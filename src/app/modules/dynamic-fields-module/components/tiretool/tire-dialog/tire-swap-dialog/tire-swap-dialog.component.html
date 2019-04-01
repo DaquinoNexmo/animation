@@ -1,0 +1,13 @@
+<div class = 'tire-row'>
+    <div class = 'cell'>{{'POSITION' | Translate}}</div>
+    <div class = 'cell'>{{'MANUFACTURER' | Translate}}</div>
+    <div class = 'cell'>{{'TIRE_PROFILE' | Translate}}</div>
+</div>
+
+<div *ngFor='let tire of data.tires'>
+    <div (click) = 'swapTire(tire)' class = 'tire-row'>
+        <div class='cell'>{{getTirePositionCode(tire)}}</div>
+        <div class='cell'>{{getTireManufacturer(tire)}}</div>
+        <div class='cell'>{{getTireProfile(tire)}}</div>
+    </div>
+</div>

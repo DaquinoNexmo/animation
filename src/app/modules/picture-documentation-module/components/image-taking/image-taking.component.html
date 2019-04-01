@@ -1,0 +1,12 @@
+<div id="app">
+        <div><video #video id="video" width="640" height="480" ></video></div>
+        <div><button id="snap" (click)="capture()">Snap Photo</button></div>
+        <canvas #canvas id="canvas" width="640" height="480"></canvas>
+        <ul>
+            <li *ngFor="let c of captures">
+                <input class="btn btn-info" type="button" value="Save Photo" (click)="savePhoto(c)">
+                <img src="{{ c }}" height="50" />
+                <input class="btn btn-warning" type="button" value="Delete Image" (click) = "deletePhoto(c)">
+            </li>
+        </ul>
+    </div>

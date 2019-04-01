@@ -1,0 +1,29 @@
+.contain {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid black;
+    z-index: 100;
+    background: white;
+}
+
+
+.box {
+    text-align: center;
+    display: inline-block;
+}
+
+@media (max-width: 768px) {
+    .contain-top {
+        bottom: 42px;
+    }
+    .boxes-bottom, .boxes-top {
+        font-size: 12px;
+        .box {
+            padding: 2px;
+        }
+    }
+}

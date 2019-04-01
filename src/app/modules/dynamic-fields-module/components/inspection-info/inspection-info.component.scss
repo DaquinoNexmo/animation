@@ -1,0 +1,23 @@
+.contain {
+    padding: 20px 50px;
+    width: 40%;
+}
+
+input{
+
+    // background-color: #FFBF00;
+    cursor: pointer;
+}
+
+input:hover {
+    background: #F3f3f3;
+    // background: #FFBF00;
+}
+
+@media(max-width: 812px) {
+
+    .contain {
+        padding: 20px 30px;
+        width:80%
+    }
+}

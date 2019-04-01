@@ -1,0 +1,15 @@
+<input type="file" accept="image/*" style="display: none" #file (change)=onFileSelected($event)>
+
+<div class="contain">
+        <button (click)="addImage()" class="selection_button">Select Image</button>
+
+        <ng-container *ngIf="isMobile">
+                <button (click)="takingImage()" class="create_button">Take Image</button>
+        </ng-container>
+
+        <ng-container *ngIf="!isMobile">
+                <button (click)="search()" class="create_button">Computer Image</button>
+        </ng-container>
+
+        <button (click)="closeDialog()" id="closeButton" style="display:none"></button>
+</div>

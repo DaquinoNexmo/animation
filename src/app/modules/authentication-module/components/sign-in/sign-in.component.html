@@ -1,0 +1,28 @@
+<body class="h-100">
+  <section class="section-login">
+    <div class="container">
+      <img src="../../../../../assets/icons/logo.png" alt="" class="img-fluid">
+
+      <form class="form-login">
+        <div class="form-group">
+          <label for="loginName">Username</label>
+          <input type="name" class="form-control" id="{{textElem.id}}" aria-describedby="emailHelp" [required]="true"
+            (change)="saveValues($event, textElem)" placeholder="{{textElem.label?.text | Translate}}" [value]="getValue(textElem)">
+        </div>
+        <div class="form-group">
+          <label for="loginPass">Password</label>
+          <input type="password" class="form-control" id="{{passwordElem.id}}" [required]="true" type="password"
+            (change)="saveValues($event, passwordElem)" placeholder="{{passwordElem.label?.text | Translate}}" [value]="getValue(passwordElem)">
+          <a href="#" class="yellow-link">forgot password</a>
+        </div>
+        <div class="form-group form-check">
+          <input type="checkbox" (element)="textElem" class="form-check-input" id="{{checkElem.id}}" [checked]="getValue(checkElem)"
+            (change)="saveValues($event, checkElem)">{{checkElem.label?.text | Translate}}>
+          <label class="form-check-label ml-5" for="exampleCheck1">Remember me</label>
+        </div>
+        <button type="submit" class="btn btn-yellow" (click)="onSubmit()">Sign in</button>
+      </form>
+
+    </div>
+  </section>
+</body>

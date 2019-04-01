@@ -1,0 +1,34 @@
+<div class = 'wrapper'>
+    <div *ngFor='let data of module.data'>
+        <div [ngSwitch] = 'typeOfData'>
+            <ng-template [ngSwitchCase]='"vehicleServiceHistory"'>
+                <div class = 'element'>
+
+                    <mat-form-field class = 'inner-element'>
+                        <input id = '{{data.fieldId}}.serviceDate' [value] = "data.value?.serviceDate" (dateInput)="updateValue($event)" (dateChange)="updateValue($event)"matInput [matDatepicker]="picker" placeholder="Service Date">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                    <mat-form-field class = 'inner-element'>
+                        <input matInput id = '{{data.fieldId}}.serviceMileage' type = 'number' [value] = 'data.value?.serviceMileage' (change) = 'updateValue($event)' placeholder="Service Mileage">
+                    </mat-form-field>
+                    <mat-checkbox class = 'inner-element' id = '{{data.fieldId}}.authorizedRepairShop' [checked] = 'data.value?.authorizedRepairShop' (change) = 'updateValue($event)'> Authorized Repair Shop</mat-checkbox>
+                    <button class = 'inner-element' mat-icon-button (click)="deleteElement(data.fieldId)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </div>
+
+            </ng-template>
+
+            <ng-template [ngSwitchCase]='"looseParts"'>
+
+            </ng-template>
+
+            <ng-template [ngSwitchCase]='"profeData"'>
+
+            </ng-template>
+        </div>
+    </div>
+
+    <button class="btn mce-btn-large" style = 'text-align: center' (click)=addElement()> + </button>
+</div>

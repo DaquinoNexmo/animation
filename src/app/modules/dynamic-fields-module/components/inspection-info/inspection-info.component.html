@@ -1,0 +1,11 @@
+<div class = 'contain' style='margin-top: 10px'>
+    <div *ngFor = 'let data of module.data'>
+        <mat-form-field style = 'width:100%'>
+            <input [disabled] = 'true' matInput placeholder="{{data.fieldId.split('.')[1] | Translate}}" [value] = 'data.value?.shortname ? data.value?.shortname : data.value'>
+        </mat-form-field>
+        <!--
+        <app-element [element] = '{type: "text", id: data.fieldId}'>
+        </app-element>
+        -->
+    </div>
+</div>

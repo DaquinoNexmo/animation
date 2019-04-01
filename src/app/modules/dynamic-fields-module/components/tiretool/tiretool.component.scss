@@ -1,0 +1,119 @@
+.wrapper {
+    text-align: center;
+}
+
+.mode-change-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 5px;
+}
+
+.axle {
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-style: solid;
+    border-width: 1px;
+    background-color: silver;
+}
+
+.numberOfAxle {
+    margin-left: auto;
+}
+.tire-right {
+    margin-left: auto;
+}
+
+.control {
+    margin-left: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.tire-container {
+    min-width: 180px;
+    min-height: 100px;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    display: flex;
+    flex-direction: row;
+    background-color: lightblue;
+    cursor: pointer;
+    align-items: center;
+}
+
+.tire-icon {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 47px;
+    height: 100px;
+}
+
+.tire-profile {
+    text-align: center;
+    margin: 2px;
+    border-style: solid;
+    border-width: 1px;
+    background-color: yellow;
+    width: 40px;
+    height: 18px;
+}
+
+@media screen and (max-width: 768px) {
+    .tire-container {
+        min-width: 90px;
+        min-height: 50px;
+        font-size: 12px;
+    }
+    .tire-icon {
+        width: 25px;
+        height: 50px;
+    }
+    .tire-profile {
+        width: 24px;
+        height: 16px;
+    }
+}
+
+.tire-container-left {
+    justify-content: flex-end;
+}
+
+
+
+.tire-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.tire-details-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+
+.tire-profile:hover {
+    background-color: gray;
+}
+
+.tire-container:hover {
+    background-color: orange;
+}
+
+#tire-box-right-position {
+    display: flex;
+    flex-direction: row;
+}
+
+#spare-tires, #additional-tires {
+    display: flex;
+    align-items: center;
+    background-color: silver;
+    margin: 10px;
+}

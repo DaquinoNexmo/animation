@@ -1,0 +1,38 @@
+<div class = 'titlebar'>
+    <h3 class = 'title'>
+        <b>{{'TIRE' | Translate}}</b>
+    </h3>
+    <button class = 'close-button' mat-dialog-close>
+        <mat-icon>close</mat-icon>
+    </button>
+</div>
+
+<div (click) = 'changeState(tireSizeState.WIDTH)' #widthTitle id = 'width-title'>
+    {{'WIDTH' | Translate}}
+</div>
+
+<mat-grid-list *ngIf = 'state === tireSizeState.WIDTH' class = 'grid-list' cols="7" rowHeight="2:1">
+    <mat-grid-tile [style.background-color] = "width === currentWidth ? 'orange' : 'gray'" (click) = 'selectWidth(width)' class = 'grid-tile' *ngFor='let width of widths'>{{width}}</mat-grid-tile>
+</mat-grid-list>
+
+<div (click) = 'changeState(tireSizeState.RATIO)' #ratioTitle id = 'ratio-title'>
+    {{'RATIO' | Translate}}
+</div>
+
+<mat-grid-list *ngIf = 'state === tireSizeState.RATIO' class = 'grid-list'  cols="7" rowHeight="2:1">
+    <mat-grid-tile [style.background-color] = "ratio === currentRatio ? 'orange' : 'gray'" (click) = 'selectRatio(ratio)' class = 'grid-tile' *ngFor='let ratio of ratios'>{{ratio}}</mat-grid-tile>
+</mat-grid-list>
+
+<div (click) = 'changeState(tireSizeState.DIAMETER)' #diameterTitle id = 'diameter-title'>
+    {{'DIAMETER' | Translate}}
+</div>
+
+<mat-grid-list *ngIf = 'state === tireSizeState.DIAMETER' class = 'grid-list' cols="7" rowHeight="30px">
+    <mat-grid-tile [style.background-color] = "diameter === currentDiameter ? 'orange' : 'gray'" (click) = 'selectDiameter(diameter)' class = 'grid-tile' *ngFor='let diameter of diameters'>{{diameter}}</mat-grid-tile>
+</mat-grid-list>
+
+<div class = 'accept-button-wrapper'>
+    <button (click) = 'saveSize()' mat-button class='accept-button'>
+        <mat-icon>done</mat-icon>
+    </button>
+</div>

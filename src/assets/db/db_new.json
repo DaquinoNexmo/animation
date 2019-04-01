@@ -1,0 +1,539 @@
+{
+  "appStructure": {
+    "modules": [
+      {
+        "name": "login",
+        "structure": {
+          "moduleID": "authentication",
+          "icon": "none",
+          "label": "AUTHENTICATION",
+          "visible": true,
+          "loadInvisible": false,
+          "nextView": "station",
+          "included": false,
+          "tags": [],
+          "loginCall": "$resources.connection.protocol$$resources.connection.domain$/JsonServer/?custom={\"client\":\"$login.client$\",\"name\":\"login\",\"data\":{\"username\":\"$login.username$\",\"pwd\":\"$!login.password$\"}}",
+          "element": [
+            {
+              "id": "login.username",
+              "editable": true,
+              "required": true,
+              "visible": true,
+              "type": "text",
+              "label": {
+                "translation": true,
+                "text": "USERNAME"
+              }
+            },
+            {
+              "id": "login.password",
+              "editable": true,
+              "required": true,
+              "visible": true,
+              "type": "password",
+              "label": {
+                "translation": true,
+                "text": "PASSWORD"
+              }
+            },
+            {
+              "id": "login.rememberMe",
+              "editable": true,
+              "required": true,
+              "visible": true,
+              "type": "checkBox",
+              "label": {
+                "translation": true,
+                "text": "REMEMBER_ME"
+              }
+            },
+            {
+              "id": "login.client",
+              "editable": true,
+              "required": true,
+              "type": "text",
+              "visible": false
+            },
+            {
+              "id": "login.session",
+              "editable": true,
+              "required": true,
+              "type": "text",
+              "visible": false
+            }
+          ]
+        },
+        "data": [
+          {
+            "fieldId": "login.username",
+            "value": "timur@nexmo",
+            "serverOperation": null
+          },
+          {
+            "fieldId": "login.password",
+            "value": "mehrbier",
+            "serverOperation": null
+          },
+          {
+            "fieldId": "login.rememberMe",
+            "value": "",
+            "serverOperation": null
+          },
+          {
+            "fieldId": "login.client",
+            "value": "login",
+            "serverOperation": null
+          },
+          {
+            "fieldId": "login.session",
+            "value": "",
+            "serverOperation": null
+          }
+        ]
+      },
+      {
+        "name": "resources",
+        "structure": {
+          "moduleID": "dynamicFields",
+          "icon": "TabBar_GeneralView",
+          "label": "GENERAL_VIEW",
+          "loadInvisible": false,
+          "included": false,
+          "tags": [],
+          "element": [
+            {
+              "id": "resources.connection.protocol",
+              "editable": true,
+              "required": true,
+              "type": "text",
+              "label": {
+                "text": "PROTOCOL",
+                "translation": true
+              }
+            },
+            {
+              "id": "resources.connection.domain",
+              "editable": true,
+              "required": true,
+              "type": "text",
+              "label": {
+                "text": "DOMAIN",
+                "translation": true
+              }
+            },
+            {
+              "id": "resources.language",
+              "editable": true,
+              "required": true,
+              "type": "comboBox",
+              "defaultoptions": ["eng", "deu"],
+              "label": {
+                "text": "LANGUAGE",
+                "translation": true
+              }
+            }
+          ]
+        },
+        "data": [
+          {
+            "fieldId": "resources.connection",
+            "value": {
+              "protocol": "https://",
+              "domain": "nexmo.damagecloud.de"
+            },
+            "serverOperation": null
+          },
+          {
+            "fieldId": "resources.language",
+            "value": "eng",
+            "serverOperation": null
+          }
+        ]
+      },
+      {
+        "name": "station",
+        "structure": {
+          "moduleID": "stationSelector",
+          "icon": "none",
+          "label": "STATION_SELECTOR",
+          "visible": true,
+          "loadInvisible": false,
+          "nextView": "processManager",
+          "included": false,
+          "tags": [],
+          "element": [
+            {
+              "id": "station.appDomain",
+              "editable": true,
+              "required": true,
+              "visible": true,
+              "type": "comboBox",
+              "displayname": "friendlyName",
+              "defaultoptions": [],
+              "label": {
+                "translation": true,
+                "text": "APP_DOMAIN"
+              }
+            },
+            {
+              "id": "station.station",
+              "editable": true,
+              "required": true,
+              "visible": true,
+              "type": "comboBox",
+              "displayname": "friendlyname",
+              "customValue": false,
+              "label": {
+                "translation": true,
+                "text": "STATION"
+              },
+              "optionsurl": "$resources.connection.protocol$$resources.connection.domain$/JsonServer/?custom={\"client\":\"$station.appDomain.clientLayerName$\",\"name\":\"getStations\",\"data\":{}}&sessionid=$login.session$"
+            }
+          ]
+        },
+        "data": [
+          {
+            "fieldId": "station.appDomain",
+            "value": {},
+            "serverOperation": null
+          },
+          {
+            "fieldId": "station.station",
+            "value": {},
+            "serverOperation": null
+          }
+        ]
+      },
+      {
+        "name": "processManager",
+        "structure": {
+          "moduleID": "processManager",
+          "icon": "processManager",
+          "label": "PROCESS_LIST",
+          "loadInvisible": false,
+          "nextView": "processCreator",
+          "included": false,
+          "tags": [],
+          "processManager": {
+            "dataurl": "$resources.connection.protocol$$resources.connection.domain$/JsonServer/?custom={\"client\":\"$station.appDomain.clientLayerName$\",\"name\":\"getInspectionsList\",\"data\":{\"station\":\"$station.station.shortname$\"}}&limit=$processManager.processManager.itemsPerPage$&start=$processManager.processManager.startIndex$&sort={\"property\":\"$processManager.processManager.sortProperty$\",\"direction\":\"$processManager.processManager.sortDirection$\"}&sessionid=$login.session$$$processManager.processManager.filterUrl$",
+            "sortDirection": ["DESC", "ASC"],
+            "itemsPerPage": 10,
+            "startIndex": 0,
+            "totalCount": 0,
+            "tableItems": [],
+            "getProcessDefinitionXmlUrl": "$resources.connection.protocol$$resources.connection.domain$/clients/nexmo/mobileClient/processDefinitions/$processManager.processManager.selectedItems.processDefinition$.xml",
+            "filters": [
+              {
+                "name": "no filter",
+                "filterOptions": ""
+              },
+              {
+                "name": "99 filter",
+                "filterOptions": "&complexFilter={\"type\":\"and\",\"values\":[{\"field\":\"documentStatusShortname\",\"type\":\"notequal\",\"value\":\"WAITING_FOR_DOCUMENTATION\"},{\"type\":\"or\",\"values\":[{\"field\":\"documentStatusShortname\",\"type\":\"notequal\",\"value\":\"READY_FOR_HANDOVER\"},{\"type\":\"and\",\"values\":[{\"field\":\"documentStatusShortname\",\"type\":\"equal\",\"value\":\"READY_FOR_HANDOVER\"},{\"field1\":\"priority\",\"type\":\"lower\",\"value2\":\"3\"}]}]},{\"field\":\"priority\",\"type\":\"notequal\",\"value\":\"99\"}]}"
+              },
+              {
+                "name": "equipmentNr",
+                "filterOptions": "&complexFilter={\"type\":\"and\",\"values\":[{\"field1\":\"equipmentNr\",\"type\":\"like\",\"value2\":\"%25$$processManager.processManager.filterValue$%25\",\"casesensitive\":false}]}"
+              }
+            ],
+            "getInspectionUrl": "$resources.connection.protocol$$resources.connection.domain$/JsonServer/?custom={\"client\":\"$station.appDomain.clientLayerName$\",\"name\":\"getInspectionMCV2\",\"data\":{\"inspectionId\":$processManager.processManager.selectedItems.inspectionId$,\"startInspection\":true,\"fullDataset\":true}}&sessionid=$login.session$",
+            "listItems": [
+              {
+                "propertyName": "createInspectionDate",
+                "translation": true,
+                "label": "DATE"
+              },
+              {
+                "propertyName": "documentStatusFriendlyname",
+                "translation": true,
+                "label": "STATUS"
+              },
+              {
+                "propertyName": "productName",
+                "translation": true,
+                "label": "PRODUCTNAME"
+              },
+              {
+                "propertyName": "orderTypeFriendlyname",
+                "translation": true,
+                "label": "ORDERTYPE"
+              },
+              {
+                "propertyName": "info",
+                "translation": true,
+                "label": "INFO"
+              }
+            ],
+            "infoItems": [
+              {
+                "propertyName": "priority",
+                "translation": true,
+                "label": "PRIORITY"
+              },
+              {
+                "propertyName": "checker",
+                "translation": true,
+                "label": "CHECKER"
+              }
+            ]
+          },
+          "element": []
+        },
+        "data": [
+          {
+            "fieldId": "processManager.processManager",
+            "value": {
+              "selectedItems": {},
+              "sortDirection": "ASC",
+              "itemsPerPage": 10,
+              "startIndex": 0,
+              "totalCount": 0,
+              "filter": {},
+              "filterUrl": "",
+              "filterValue": "",
+              "addedModules": [],
+              "sortProperty": "createInspectionDate"
+            },
+            "serverOperation": null
+          }
+        ]
+      },
+      {
+        "name": "processCreator",
+        "structure": {
+          "moduleID": "processCreator",
+          "icon": "none",
+          "label": "PROCESS_CREATOR",
+          "visible": true,
+          "loadInvisible": false,
+          "nextView": "processManager",
+          "included": false,
+          "tags": [],
+          "processCreator": {
+            "dataurl": "$resources.connection.protocol$$resources.connection.domain$/JsonServer/?custom={\"client\":\"$station.appDomain.clientLayerName$\", \"name\":\"getVehicles\",\"data\": {}}&limit=$processCreator.processCreator.itemsPerPage$&start=$processCreator.processCreator.startIndex$&sort={\"property\":\"$processCreator.processCreator.sortProperty$\",\"direction\":\"$processCreator.processCreator.sortDirection$\"}&complexFilter={\"field1\":\"$processCreator.processCreator.vehicleSearchKey$\",\"type\":\"like\",\"value2\":\"%25$$processCreator.processCreator.vehicleSearchValue$%25\"}&sessionid=$login.session$",
+            "sortDirection": ["DESC", "ASC"],
+            "itemsPerPage": 10,
+            "startIndex": 0,
+            "totalCount": 0,
+            "vehicles": [],
+            "createInspectionUrl": "$resources.connection.protocol$$resources.connection.domain$/JsonServer/?custom={\"client\":\"$station.appDomain.clientLayerName$\", \"name\":\"createOrder\",\"data\":{\"orderType\":\"$processCreator.processType.orderTypeShortname$\",\"orderData\":{\"comment\":\"\",\"station\":\"$station.station.shortname$\",\"vehicle\":\"$processCreator.processCreator.selectedItems.vehicleId$\"}}}&sessionid=$login.session$",
+            "listItems": [
+              {
+                "propertyName": "manufacturer",
+                "translation": true,
+                "label": "MANUFACTURER"
+              },
+              {
+                "propertyName": "license",
+                "translation": true,
+                "label": "LICENSE"
+              },
+              {
+                "propertyName": "vin",
+                "translation": true,
+                "label": "VIN"
+              },
+              {
+                "propertyName": "fleetNr",
+                "translation": true,
+                "label": "FLEET_NUMBER"
+              }
+            ]
+          },
+          "element": [
+            {
+              "id": "processCreator.processType",
+              "editable": true,
+              "required": true,
+              "visible": true,
+              "type": "comboBox",
+              "displayname": "orderTypeFriendlyname",
+              "optionsurl": "$resources.connection.protocol$$resources.connection.domain$/JsonServer/?custom={\"client\":\"$station.appDomain.clientLayerName$\",\"name\":\"getWebAvailableOrderTypesForDispo\",\"data\":{}}&sessionid=$login.session$"
+            },
+            {
+              "id": "processCreator.license",
+              "editable": true,
+              "required": true,
+              "visible": true,
+              "type": "buttonWithInput",
+              "buttonLabel": "Search",
+              "label": {
+                "text": "LICENSE",
+                "translation": true
+              }
+            },
+            {
+              "id": "processCreator.vin",
+              "editable": true,
+              "required": true,
+              "visible": true,
+              "type": "buttonWithInput",
+              "buttonLabel": "Search",
+              "label": {
+                "text": "VIN",
+                "translation": true
+              }
+            },
+            {
+              "id": "processCreator.fleetNr",
+              "editable": true,
+              "required": true,
+              "visible": true,
+              "type": "buttonWithInput",
+              "buttonLabel": "Search",
+              "label": {
+                "text": "FLEET NR",
+                "translation": true
+              }
+            }
+          ]
+        },
+        "data": [
+          {
+            "fieldId": "processCreator.processCreator",
+            "value": {
+              "vehicleSearchKey": "",
+              "vehicleSearchValue": "",
+              "sortDirection": "ASC",
+              "itemsPerPage": 10,
+              "startIndex": 0,
+              "sortProperty": "vin",
+              "selectedItems": "",
+              "totalCount": 0
+            },
+            "serverOperation": null
+          },
+          {
+            "fieldId": "processCreator.processType",
+            "value": "",
+            "serverOperation": null
+          },
+          {
+            "fieldId": "processCreator.license",
+            "value": "",
+            "serverOperation": null
+          },
+          {
+            "fieldId": "processCreator.vin",
+            "value": "",
+            "serverOperation": null
+          },
+          {
+            "fieldId": "processCreator.fleetNr",
+            "value": "",
+            "serverOperation": null
+          }
+        ]
+      },
+      {
+        "name": "menuBar",
+        "structure": {
+          "moduleID": "menuBar",
+          "icon": "none",
+          "label": "MENU_BAR",
+          "tags": [],
+          "element": [
+            {
+              "id": "menuBar.label1",
+              "editable": true,
+              "required": true,
+              "type": "label",
+              "position": "center",
+              "label": {
+                "translation": false,
+                "text": "ORDER_TYPE : $processManager.processManager.selectedItems.orderTypeFriendlyname$"
+              },
+              "visibleExp": {
+                "regExp": "[\\w]",
+                "dynExp": "$processManager.processManager.selectedItems.orderTypeFriendlyname$"
+              }
+            },
+            {
+              "id": "menuBar.label2",
+              "editable": true,
+              "required": true,
+              "type": "label",
+              "position": "center",
+              "label": {
+                "translation": false,
+                "text": "BUSINESS_UNIT : $station.appDomain.friendlyName$"
+              },
+              "visibleExp": {
+                "regExp": "[\\w]",
+                "dynExp": "$station.appDomain.friendlyName$"
+              }
+            },
+            {
+              "id": "menuBar.settings",
+              "editable": true,
+              "required": true,
+              "type": "button",
+              "position": "left",
+              "icon": "settings.svg",
+              "buttonLabel": "Settings",
+              "label": {
+                "translation": true,
+                "text": "STATION_ELEMENT_2"
+              }
+            },
+            {
+              "id": "menuBar.backToprocessManager",
+              "editable": true,
+              "required": true,
+              "type": "button",
+              "position": "right",
+              "buttonLabel": "Back to Process List",
+              "visible": false,
+              "label": {
+                "translation": true,
+                "text": "STATION_ELEMENT_2"
+              },
+              "visibleExp": {
+                "regExp": "[\\w]",
+                "dynExp": "$processManager.processManager.selectedItems.inspectionId$"
+              },
+              "action": {
+                "clearModules": ["*processModules"],
+                "navigateToModule": "processManager"
+              }
+            },
+            {
+              "id": "menuBar.logout",
+              "editable": true,
+              "required": true,
+              "type": "button",
+              "icon": "logout.svg",
+              "position": "right",
+              "buttonLabel": "Logout",
+              "visible": false,
+              "label": {
+                "translation": true,
+                "text": "STATION_ELEMENT_2"
+              },
+              "visibleExp": {
+                "regExp": "[\\w]",
+                "dynExp": "$login.session$"
+              },
+              "action": {
+                "clearModules": ["*all"],
+                "navigateToModule": "blank"
+              }
+            }
+          ]
+        },
+        "data": [
+          {
+            "fieldId": "menuBar.label1",
+            "value": "",
+            "serverOperation": null
+          },
+          {
+            "fieldId": "menuBar.label2",
+            "value": "",
+            "serverOperation": null
+          }
+        ]
+      }
+    ]
+  }
+}

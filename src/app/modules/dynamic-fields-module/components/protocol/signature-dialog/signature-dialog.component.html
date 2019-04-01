@@ -1,0 +1,79 @@
+<body>
+    <header>
+
+    </header>
+
+    <main>
+        <section>
+
+            <div [ngSwitch]='state'>
+                <div class="signiture">
+                    <div class='close-button'>
+                        <h3 class='title'>{{titleState}}</h3>
+                        <button mat-dialog-close>X</button>
+                    </div>
+                    <div *ngSwitchCase='signatureState.SIGN'>
+
+                        <div *ngIf='checkerSignatureRequired' class='signature-wrapper'>
+                            <h4 class='headline'>Checker Signature</h4>
+                            <div class='signature-border'>
+                                <signature-pad #checker [options]="signaturePadOptions" (onBeginEvent)="drawStart()"
+                                    (onEndEvent)="drawComplete()"></signature-pad>
+                            </div>
+                        </div>
+
+                        <div *ngIf='customerSignatureRequired' class='signature-wrapper'>
+                            <h4 class='headline'>Customer Signature</h4>
+                            <div class='signature-border'>
+                                <signature-pad #customer [options]="signaturePadOptions" (onBeginEvent)="drawStart()"
+                                    (onEndEvent)="drawComplete()"></signature-pad>
+                            </div>
+                        </div>
+
+                        <button [disabled]='disabled' class='submit-button' (click)='submitSignature()'>Submit</button>
+
+                    </div>
+                </div>
+
+                <div *ngSwitchCase='signatureState.NO_CUSTOMER_SIGNATURE'>
+                    <div *ngIf='checkerSignatureRequired'>
+
+                        <h3 class='headline'>Checker Signature</h3>
+                        <div class='signature-border'>
+                            <img [src]='getCheckerSignature()'>
+                        </div>
+                    </div>
+
+                    <div class='form-group'>
+                        <input type='radio' name='customer_radio' (change)="onSelectedChange($event.target.value)"
+                            value='The customer is not present'> The customer is not present <br>
+                        <input type='radio' name='customer_radio' (change)="onSelectedChange($event.target.value)"
+                            value='The customer refused to sign'> The customer refused to sign <br>
+                    </div>
+                    <button [disabled]='disabled' (click)='noCustomerSignature()' style='margin: 5px auto'>Submit</button>
+                </div>
+
+                <div *ngSwitchCase='signatureState.SEND_EMAIL'>
+                    <button class='yes-button' (click)=goToSendEmail(true)>Yes</button>
+                    <button class='no-button' (click)=goToSendEmail(false)>No</button>
+                </div>
+
+                <div *ngSwitchCase='signatureState.FILL_EMAIL'>
+                    <div *ngFor='let mail of emails' class='email-wrapper'>
+                        <label>Email: <input (change)='onEmailChange($event.target.value, mail)' class='email-input'
+                                type='text'></label>
+                    </div>
+                    <div class='email-wrapper'>
+                        <label>Add another email: <input type='button' (click)='addEmail()' value='+'></label>
+                    </div>
+                    <button class='submit-button' mat-dialog-close>Submit</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+
+    </footer>
+</body>

@@ -1,0 +1,6 @@
+<h3>Extra info for this item</h3>
+<div mat-dialog-content>
+    <div *ngFor='let property of data.extraInfo'>
+        <p>{{property}}: {{data.row[property]}}</p>
+    </div>
+</div>

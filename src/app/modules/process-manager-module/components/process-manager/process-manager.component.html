@@ -1,0 +1,18 @@
+<body>
+
+    <header>
+        <h1>Process List</h1>
+    </header>
+
+    <section id="process_list">
+
+        <div class="table">
+            <app-data-table [moduleName]='moduleName' (selectedRowEmitter)='onSelectedRow($event[0])'></app-data-table>
+        </div>
+        <button class="btn btn-primary" (click)='createInspection()'>Create Inspection</button>
+
+    </section>
+
+    <app-menu-bar></app-menu-bar>
+
+</body>

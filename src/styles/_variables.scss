@@ -1,0 +1,31 @@
+/** Import Bootstrap functions */
+@import "../../node_modules/bootstrap/scss/functions";
+
+$font-regular: 'open_sansregular', sans-serif;
+$font-bold: 'open_sansbold', sans-serif;
+$font-light: 'open_sanslight', sans-serif;
+
+$body-bg: #efefef !default;
+$body-color: #000 !default;
+// Colors
+$secondary: #707070;
+$color-primary: #EEB636;
+$color-secondary: $secondary;
+
+$grey: #F4F4F4;
+// $blue: #007bff !default;
+// $indigo: #6610f2 !default;
+// $purple: #6f42c1 !default;
+// $pink: #e83e8c !default;
+// $red: #d61923 !default;
+// $orange: #fd7e14 !default;
+// $yellow: #ffc107 !default;
+// $green: #28a745 !default;
+// $teal: #20c997 !default;
+// $cyan: #17a2b8 !default;
+
+$theme-colors: (
+  "primary": $color-primary,
+  "secondary": $color-secondary,
+  "light": #fff
+);
