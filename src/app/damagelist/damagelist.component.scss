@@ -96,6 +96,7 @@
 			-webkit-box-shadow: 0px 6px 33px -4px rgba(0, 0, 0, .16);
 			-moz-box-shadow: 0px 6px 33px -4px rgba(0, 0, 0, .16);
 			box-shadow: 0px 6px 33px -4px rgba(0, 0, 0, .16);
+			transition: 1s
 		}
 
 		.square-icon-repared-on {
@@ -115,6 +116,7 @@
 			-webkit-box-shadow: 0px 6px 33px -4px rgba(0, 0, 0, .16);
 			-moz-box-shadow: 0px 6px 33px -4px rgba(0, 0, 0, .16);
 			box-shadow: 0px 6px 33px -4px rgba(0, 0, 0, .16);
+			transition: 1s
 		}
 
 		.square-icon-no-repared-on {
@@ -145,7 +147,7 @@
 		justify-content: center;
 		align-items: center;
 		display: flex;
-		opacity: 0;
+		opacity: 1;
 	}
 }
 
@@ -170,14 +172,13 @@
 		border-top-right-radius: 5px;
 		border-bottom-right-radius: 5px;
 		background: #BEF0A3;
-		z-index: 99999;
+		z-index: 9;
 		height: 100%;
 		width: 100%;
 		justify-content: center;
 		align-items: center;
 		display: flex;
-		opacity: 0;
-		transform: translateY(-20px);
+		opacity: 1;
 	}
 
 	.no-repared-confirmation {
@@ -193,8 +194,7 @@
 		justify-content: center;
 		align-items: center;
 		display: flex;
-		opacity: 0;
-		transform: translateY(-20px);
+		opacity: 1;
 	}
 }
 @keyframes schaden-swip{

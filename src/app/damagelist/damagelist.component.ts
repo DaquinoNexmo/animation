@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { trigger, transition, style, animate, state} from '@angular/animations';
+import { trigger, transition, style, animate, stagger,state, group, query, animateChild} from '@angular/animations';
 import { fade } from '../animations';
 
 
@@ -7,42 +7,136 @@ import { fade } from '../animations';
   selector: 'app-damagelist',
   templateUrl: './damagelist.component.html',
   styleUrls: ['./damagelist.component.scss'],
-  animations:[
+  animations: [
     trigger('animationRun', [
-      state('1', style({
-        height: '200px',
-        opacity: 1,
-        backgroundColor: 'yellow'
+
+      state('state1',style({
+        transform: 'translateX(-100px)'
       })),
-      state('0', style({
-        height: '100px',
-        opacity: 0.5,
-        backgroundColor: 'green'
+
+      state('state2', style({
+        transform: 'translateX(0px)'
       })),
-      transition('* => closed', [
-        animate('1s')
+      
+      transition('*=>*', [
+        group([
+          query('@theChildAnimation', animateChild()),
+          query('@arrowPath', animateChild()),
+          animate('300ms'),
+        ]),
       ]),
-      transition('* => open', [
-        animate('0.5s')
-      ]),
+      // transition('*=>state2', [
+      //   group([
+      //     query('@theChildAnimation', animateChild()),
+      //     query('@arrowPath', animateChild()),
+      //     animate('300ms'),
+      //   ]),
+      // ]),
     ]),
-    
-    
+
+    // Chield trigger
+
+    trigger( 'theChildAnimation', [
+      state('state1',style({
+        transform: 'rotate(-180deg)'
+      })),
+
+      state('state2', style({
+        transform: 'rotate(0deg)'
+      })),
+      
+      transition( '* <=> *', [
+        animate( '0.9s cubic-bezier(0.55, 0.31, 0.15, 0.93)' ),
+      ] ),
+    ]),
+
+    // arrow trigger 
+
+    trigger( 'arrowPath', [
+      state('state1',style({
+        fill: 'rgba(255, 0, 0, 0.5)'
+      })),
+
+      state('state2', style({
+        fill: '#d6d9de'
+      })),
+      
+      transition( '* <=> *', [
+        animate( '0.9s cubic-bezier(0.55, 0.31, 0.15, 0.93)' ),
+      ] ),
+    ]),
+
+
+    trigger('fade', [
+      transition('void => *', [
+        style({opacity: 0, transform: "translateY(-20px)"}),
+        animate('1s cubic-bezier(0.15, 0.31, 0.55, 0.93)', style({opacity: 1, transform: "translateY(0px)" }))
+      ]),
+      transition('* => void', [
+        style({opacity: 1, transform: "translateY(0px)"}),
+        animate(1000, style({opacity: 0, transform: "translateY(-20px)" }))
+      ])
+    ]),
+
+    trigger('delete', [
+      
+      transition(':enter', [
+        query('#Group_2386', style({ opacity: 1, transform: 'translateX(-800px)'})),
+        query('#Group_2386',
+          //stagger('2000ms',[
+              animate('400ms ease-out', style({ opacity: 0, transform: 'translateX(10px)'}))
+            //])
+            )
+          ])
+    ])
   ]
 })
-export class DamagelistComponent implements OnInit {
+// transition('*=>state2', [
+      //   group([
+      //     query('@theChildAnimation', animateChild()),
+      //     query('@arrowPath', animateChild()),
+      //     animate('300ms'),
+      //   ]),
+      // ]),
 
-  animationRun = false;
+export class DamagelistComponent implements OnInit {
+  
+  reparedAnim = false;
+  noReparedAnim = false;
+  itemDeleted = false;
+  test = "";
   constructor() { }
 
   ngOnInit() {
   }
 
-  animationTrigger() {
-    this.animationRun = !this.animationRun;
-    console.log(this.animationRun)
-  }
 
   
 
+  changeState(state: any) {
+    this.test = state;
+    console.log(this.test);
+  }
+     
+
+ 
+  togleReparedAnim() {
+    this.reparedAnim = true;
+    document.querySelector('.square-icon-repared').classList.add('square-icon-repared-on');
+		document.querySelector('.square-icon-no-repared').classList.remove('square-icon-no-repared-on');
+
+    setTimeout(() => {
+      this.reparedAnim = false;
+    }, 1500);
+  }
+
+  togleNoReparedAnim() {
+    this.noReparedAnim = true;
+    document.querySelector('.square-icon-no-repared').classList.add('square-icon-no-repared-on');
+		document.querySelector('.square-icon-repared').classList.remove('square-icon-repared-on');
+
+    setTimeout(() => {
+      this.noReparedAnim = false;
+    }, 1500);
+  }  
 }
