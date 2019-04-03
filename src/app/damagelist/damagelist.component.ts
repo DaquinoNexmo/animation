@@ -8,16 +8,13 @@ import { fade } from '../animations';
   templateUrl: './damagelist.component.html',
   styleUrls: ['./damagelist.component.scss'],
   animations: [
-    trigger('animationRun', [
-
+    trigger('animationSwipe', [
       state('state1',style({
         transform: 'translateX(-100px)'
       })),
-
       state('state2', style({
         transform: 'translateX(0px)'
       })),
-      
       transition('*=>*', [
         group([
           query('@theChildAnimation', animateChild()),
@@ -25,16 +22,7 @@ import { fade } from '../animations';
           animate('300ms'),
         ]),
       ]),
-      // transition('*=>state2', [
-      //   group([
-      //     query('@theChildAnimation', animateChild()),
-      //     query('@arrowPath', animateChild()),
-      //     animate('300ms'),
-      //   ]),
-      // ]),
     ]),
-
-    // Chield trigger
 
     trigger( 'theChildAnimation', [
       state('state1',style({
@@ -50,8 +38,6 @@ import { fade } from '../animations';
       ] ),
     ]),
 
-    // arrow trigger 
-
     trigger( 'arrowPath', [
       state('state1',style({
         fill: 'rgba(255, 0, 0, 0.5)'
@@ -66,7 +52,6 @@ import { fade } from '../animations';
       ] ),
     ]),
 
-
     trigger('fade', [
       transition('void => *', [
         style({opacity: 0, transform: "translateY(-20px)"}),
@@ -78,65 +63,135 @@ import { fade } from '../animations';
       ])
     ]),
 
+//
+
     trigger('delete', [
-      
-      transition(':enter', [
-        query('#Group_2386', style({ opacity: 1, transform: 'translateX(-800px)'})),
-        query('#Group_2386',
-          //stagger('2000ms',[
-              animate('400ms ease-out', style({ opacity: 0, transform: 'translateX(10px)'}))
-            //])
-            )
+      state('state1',style({
+        //transform: 'translateX(-100px)'
+      })),
+      state('state2', style({
+        transform: 'translateX(0px)'
+      })),
+
+      transition('void => *', [ //this can be 'state1 => void' based on how we will delete this of the node
+       
+          //query(':self', [stagger(100, [animate('0.5s', style({ opacity: 1, transform: 'translateY(-90px)' }))])]),
+
+          query(':self', [
+            style({ opacity: 0, transform: 'translateY(-90px)' }),
+            stagger(1000, [
+              animate('0.5s', style({ opacity: 1, transform: 'translateY(0px)' }))
+            ])
           ])
-    ])
+          
+          // query(':self', style({ transform: 'translateY(-200px)', opacity: 0})),
+          // query(':self', animate('900ms', style({ transform: 'translateY(0)', opacity: 1}))),
+        
+      ]),
+
+      transition('* => state1', [
+          query('.yellow-confirmation', style({ transform: 'translateY(-20px)', opacity: 0})),
+          query('.yellow-confirmation', animate('900ms', style({ transform: 'translateY(0)', opacity: 1}))),
+      ]),
+      transition('state1 => state2', [ //this can be 'state1 => void' based on how we will delete this of the node
+        group([
+          query(':self', style({ transform: 'translateY(0px)', opacity: 1})),
+          query(':self', animate('900ms', style({ transform: 'translateY(-200px)', opacity: 0}))),
+        ]),
+      ]),
+    ]),
   ]
 })
-// transition('*=>state2', [
-      //   group([
-      //     query('@theChildAnimation', animateChild()),
-      //     query('@arrowPath', animateChild()),
-      //     animate('300ms'),
-      //   ]),
-      // ]),
+
 
 export class DamagelistComponent implements OnInit {
+
   
   reparedAnim = false;
   noReparedAnim = false;
-  itemDeleted = false;
-  test = "";
+  itemDeleted = "";
+  SwipeValue = "";
   constructor() { }
 
+  items = [
+    { reparedAnim: false, noReparedAnim: false, itemDeleted: "", isRepared: false, isNoRepared: true} , 
+    { reparedAnim: false, noReparedAnim: false, itemDeleted: "", isRepared: true, isNoRepared: false} , 
+    { reparedAnim: false, noReparedAnim: false, itemDeleted: "", isRepared: false, isNoRepared: false} , 
+    { reparedAnim: false, noReparedAnim: false, itemDeleted: "", isRepared: true, isNoRepared: false} , 
+    { reparedAnim: false, noReparedAnim: false, itemDeleted: "", isRepared: false, isNoRepared: false} , 
+    { reparedAnim: false, noReparedAnim: false, itemDeleted: "", isRepared: true, isNoRepared: false} , 
+  ];
+  
   ngOnInit() {
+
+    let obj1 = { id: "Thomaz"};
+    let obj2 = {id: "Ivan"};
+    obj1 = obj2;
+    console.log(obj1, obj2);
+    obj2.id= "Petar";
+    console.log(obj1, obj2);
   }
 
 
   
 
   changeState(state: any) {
-    this.test = state;
-    console.log(this.test);
+    this.SwipeValue = state;
+    console.log(this.SwipeValue);
   }
      
 
  
-  togleReparedAnim() {
-    this.reparedAnim = true;
-    document.querySelector('.square-icon-repared').classList.add('square-icon-repared-on');
-		document.querySelector('.square-icon-no-repared').classList.remove('square-icon-no-repared-on');
+  reparedIconClick(i) {
+    if(!this.items[i].isRepared) { // only animate and change the value of isNoRepared if the button is not pressed
+      this.items[i].reparedAnim = true; // start the animation
+      this.items[i].isNoRepared = false; // remove the red button isNoRepared
+    }
+    this.items[i].isRepared = !this.items[i].isRepared; // invert the value of button on pressed (Green one)
+    
 
     setTimeout(() => {
-      this.reparedAnim = false;
+      this.items[i].reparedAnim = false; // remove the confirmation element and start second part of animation
     }, 1500);
   }
 
-  togleNoReparedAnim() {
-    this.noReparedAnim = true;
-    document.querySelector('.square-icon-no-repared').classList.add('square-icon-no-repared-on');
-		document.querySelector('.square-icon-repared').classList.remove('square-icon-repared-on');
+  NoReparedIconClick(i) {
+    if(!this.items[i].isNoRepared) { // only animate and change the value of isNoRepared if the button is not pressed
+      this.items[i].noReparedAnim = true; // start the animation
+      this.items[i].isRepared = false // remove the red green isRepared
+    }
+    this.items[i].isNoRepared = !this.items[i].isNoRepared; // invert the value of button on pressed (red one)
 
     setTimeout(() => {
-      this.noReparedAnim = false;
+      this.items[i].noReparedAnim = false;  // remove the confirmation element and start second part of animation
     }, 1500);
-  }  
+  }
+
+  deletItem(i){
+    console.log("Value before = ", this.items[i].itemDeleted);
+    //this.SwipeValue = "state2";
+    this.items[i].itemDeleted = "state1";
+    console.log("Value after = ", this.items[i].itemDeleted)
+    setTimeout(() => {
+      this.items[i].itemDeleted = "state2";
+      for (let index = i + 1; index < this.items.length; index++) {
+        this.items[index].itemDeleted = "state1";
+      }
+    }, 1200);
+
+    setTimeout(() => {
+      this.items.splice(i, 1);
+    }, 2100);
+
+
+  }
+  
+
+  function() {
+    document.addEventListener
+  }
+
+ 
+
+
 }

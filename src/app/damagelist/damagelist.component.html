@@ -1,18 +1,3 @@
-<nav class="nav-menu">
-  <div class="container">
-    <div class="nav-items">
-      <i class="icon icon-doc"></i>
-        <div class="group-center-menu">
-          <i class="icon icon-arrow-left"></i>
-          <i class="icon icon-tools"></i>
-          <i class="icon icon-arrow-right"></i>
-          <i class="icon icon-arrow-down-yellow"></i>
-        </div>
-      <i class="icon icon-config"></i>
-    </div>
-  </div>
-</nav>
-
 <div class="btns-bellow-menu">
   <div class="btn-more" (click)="changeState('state1')">
     <svg xmlns="http://www.w3.org/2000/svg" width="14.59" height="14.59" viewBox="0 0 14.59 14.59">
@@ -40,11 +25,12 @@
 
 
 
+
+
+
 <div class="container">
-
-
-  <div class="pre-row" @rowLeaving>
-    <div *ngIf="reparedAnim" @fade class="repared-confirmation">
+  <div class="pre-row" [@delete] = 'item.itemDeleted' *ngFor="let item of items; index as i">
+    <div *ngIf="item.reparedAnim" @fade class="repared-confirmation">
         <svg xmlns="http://www.w3.org/2000/svg" width="58.358" height="68.903" viewBox="0 0 58.358 68.903">
           <g id="Group_2385" data-name="Group 2385" transform="translate(-165.197 -208.385)">
             <g id="Path_1594" data-name="Path 1594" transform="translate(-266.479 39.777)" fill="#fff" stroke-miterlimit="10">
@@ -55,7 +41,7 @@
           </g>
         </svg>          
     </div>
-    <div *ngIf="noReparedAnim" @fade class="no-repared-confirmation">
+    <div *ngIf="item.noReparedAnim" @fade class="no-repared-confirmation">
       <svg xmlns="http://www.w3.org/2000/svg" width="88.46" height="86.157" viewBox="0 0 88.46 86.157">
         <g id="Group_2386" data-name="Group 2386" transform="translate(-143.316 -199.614)">
           <g id="Path_1594" data-name="Path 1594" transform="translate(205.557 199.614) rotate(47)" fill="#fff" stroke-miterlimit="10">
@@ -66,8 +52,8 @@
         </g>
       </svg>                 
     </div>
-    <div *ngIf="itemDeleted" @delete class="yellow-confirmation">
-      <svg xmlns="http://www.w3.org/2000/svg" width="88.46" height="86.157" viewBox="0 0 88.46 86.157">
+    <div *ngIf="item.itemDeleted === 'state1'" class="yellow-confirmation">
+      <svg class="classe" xmlns="http://www.w3.org/2000/svg" width="88.46" height="86.157" viewBox="0 0 88.46 86.157">
         <g id="Group_2386" data-name="Group 2386" transform="translate(-143.316 -199.614)">
           <g id="Path_1594" data-name="Path 1594" transform="translate(205.557 199.614) rotate(47)" fill="#fff" stroke-miterlimit="10">
             <path d="M 19.79892158508301 84.85272979736328 C 19.79876708984375 84.85272979736328 19.7989559173584 84.85272979736328 19.79879951477051 84.85272979736328 L 18.62685585021973 84.85271453857422 C 13.36323261260986 84.85265350341797 9.080910682678223 80.35076141357422 9.080843925476074 74.8172607421875 L 9.087188720703125 34.80930709838867 C 9.087177276611328 34.14007186889648 8.765644073486328 33.5115966796875 8.205043792724609 33.0849609375 C 3.761677265167236 29.73109436035156 0.9002550840377808 24.5975399017334 0.3536995351314545 18.9999942779541 C -0.004833793267607689 15.34155082702637 0.5833884477615356 11.68018436431885 2.054777383804321 8.411639213562012 C 3.466421842575073 5.275773048400879 5.651066303253174 2.563761711120605 8.37252140045166 0.5688173174858093 C 8.655599594116211 0.3601284623146057 8.984866142272949 0.2500284612178802 9.325288772583008 0.2500284612178802 C 10.11599922180176 0.2500284612178802 10.96943283081055 0.8766950964927673 10.96944427490234 1.889106273651123 L 10.96601104736328 14.84367275238037 C 10.96603298187256 17.01677322387695 12.65394401550293 18.78468322753906 14.72864437103271 18.78471755981445 L 24.08383369445801 18.78481674194336 C 25.09172248840332 18.78481674194336 26.03826713562012 18.3736400604248 26.74916648864746 17.62702751159668 C 27.45664405822754 16.88400650024414 27.84626579284668 15.8968620300293 27.84625434875488 14.84746170043945 L 27.84957695007324 2.172717332839966 C 27.84956550598145 1.717361807823181 28.02775573730469 1.298595070838928 28.35131072998047 0.9935062527656555 C 28.65751075744629 0.7047840356826782 29.07336616516113 0.5391951203346252 29.49225425720215 0.5391951203346252 C 29.85412216186523 0.5391951203346252 30.20158767700195 0.6606062054634094 30.49706649780273 0.8903062343597412 C 32.83257675170898 2.703684091567993 34.76860046386719 5.088795185089111 36.09595489501953 7.787872791290283 C 37.48893356323242 10.62040615081787 38.19525527954102 13.68539524078369 38.19528961181641 16.89770698547363 C 38.19532012939453 20.12228393554688 37.44404220581055 23.3248291015625 36.02265548706055 26.15913963317871 C 34.64793395996094 28.90040588378906 32.64891052246094 31.30477333068848 30.24172210693359 33.1123161315918 C 29.67814445495605 33.53399658203125 29.35472106933594 34.16287231445313 29.35473251342773 34.83745193481445 L 29.34814453125 74.81745910644531 C 29.34817695617676 77.50067138671875 28.3534107208252 80.02241516113281 26.54711151123047 81.91819763183594 C 24.74413108825684 83.81047058105469 22.34738159179688 84.85272979736328 19.79892158508301 84.85272979736328 Z" stroke="none"/>
@@ -77,7 +63,7 @@
         </g>
       </svg>                 
     </div>
-    <div class="schaden-x" (click)="itemDeleted = true">
+    <div class="schaden-x" (click)="deletItem(i)">
       <svg xmlns="http://www.w3.org/2000/svg" width="39.404" height="42.031" viewBox="0 0 39.404 42.031">
         <g id="Group_2384" data-name="Group 2384" transform="translate(-305 -225.262)">
           <rect id="Rectangle_1642" data-name="Rectangle 1642" width="39.404" height="42.031" rx="6" transform="translate(305 225.262)" fill="red" opacity="0.695"/>
@@ -88,7 +74,7 @@
         </g>
       </svg>      
     </div>
-    <div class="schaden-liste-row" [@animationRun] = 'test'>
+    <div class="schaden-liste-row" [@animationSwipe] = 'SwipeValue'>
       <div class="schaden-liste-genereal" >
         <div class="crop-img">
           <img src="../dist/images/car.jpg" alt="" class="schaden-liste-img">
@@ -101,7 +87,7 @@
         </div>
       </div>
       <div class="schaden-liste-menu">
-        <div class="square-icon-repared" (click)="togleReparedAnim()">
+        <div class="square-icon-repared" (click)="reparedIconClick(i)" [ngStyle]="{'background-color': item.isRepared ? '#bef0a3' : '#D6D9DE' }">
           <svg xmlns="http://www.w3.org/2000/svg" width="18.664" height="21.955" viewBox="0 0 18.664 21.955">
             <g id="Group_2384" data-name="Group 2384" transform="translate(-183.196 -288.385)">
               <g id="Path_1594" data-name="Path 1594" transform="translate(-248.48 119.777)" fill="#fff" stroke-miterlimit="10">
@@ -113,7 +99,7 @@
           </svg>
           
         </div>
-        <div class="square-icon-no-repared" (click)="togleNoReparedAnim()">
+        <div class="square-icon-no-repared" (click)="NoReparedIconClick(i)" [ngStyle]="{'background-color': item.isNoRepared ? '#f0a3a3' : '#D6D9DE' }">
           <svg xmlns="http://www.w3.org/2000/svg" width="22.561" height="21.973" viewBox="0 0 22.561 21.973">
             <g id="Group_2385" data-name="Group 2385" transform="translate(-252.318 -288.614)">
               <g id="Path_1594" data-name="Path 1594" transform="translate(268.191 288.614) rotate(47)" fill="#fff" stroke-miterlimit="10">
@@ -125,148 +111,9 @@
           </svg>
         </div>
       </div>
-      <svg class="arrow-left" [@theChildAnimation] = 'test' xmlns="http://www.w3.org/2000/svg" width="19.053" height="29.36" viewBox="0 0 19.053 29.36">
-        <path [@arrowPath] = 'test' id="arrow-left-path" data-name="Path 1655" d="M16.68,21.053,2,6.373,6.373,2,16.68,12.307,26.987,2,31.36,6.373Z" transform="translate(21.053 -2) rotate(90)" fill="#d6d9de"/>
+      <svg class="arrow-left" [@theChildAnimation] = 'SwipeValue' xmlns="http://www.w3.org/2000/svg" width="19.053" height="29.36" viewBox="0 0 19.053 29.36">
+        <path [@arrowPath] = 'SwipeValue' id="arrow-left-path" data-name="Path 1655" d="M16.68,21.053,2,6.373,6.373,2,16.68,12.307,26.987,2,31.36,6.373Z" transform="translate(21.053 -2) rotate(90)" fill="#d6d9de"/>
       </svg>
     </div>
   </div>
-
-  
-  
-  
-
-  <a href="#" class="yellow-link">Hinzufügen</a>
 </div>
-
-<script>
-
-// class '.row-left' aply swip left effect, must by use in '.schaden-liste-row' element
-// class '.row-left-reverse' aply swip BACK effect, must by use in '.schaden-liste-row' element
-// class '.schaden-delet-confirmation' aply yellow background and push element up, must by use in '.pre-row' element. This effects have 2 seconds, after that the lement can be deleted of the DOM. 
-
-document.addEventListener('keyup', e => {
-  console.log(e.key);
-  switch (e.key) {
-                     
-      case 'ArrowLeft':
-      document.querySelector('.schaden-liste-row').classList.add('row-left');
-      document.querySelector('.schaden-liste-row').classList.remove('row-left-reverse');
-      document.querySelector('#arrow-left-path').setAttribute("fill", "rgba(255, 0, 0, 0.5");
-      document.querySelector('.arrow-left').style.transform = "rotate(180deg)";
-      document.querySelector('.arrow-left').style.WebkitTransitionDuration='0.7s';
-        break;
-
-      case 'ArrowRight':
-      document.querySelector('.schaden-liste-row').classList.add('row-left-reverse');
-      document.querySelector('.schaden-liste-row').classList.remove('row-left');
-      document.querySelector('#arrow-left-path').setAttribute("fill", "#d6d9de");
-      document.querySelector('.arrow-left').style.transform = "rotate(360deg)";
-      document.querySelector('.arrow-left').style.WebkitTransitionDuration='0.7s';
-        break;
-
-        case 'ArrowUp':
-        
-        break;
-        
-      
-
-      case 'Delete':
-      document.querySelector('.pre-row').style.display = 'none'; // or delete the node
-        break;
-
-              
-          }
-      });
-
-      document.querySelector('.schaden-x').addEventListener('click', function() {
-        var deletedAnim = document.createElement("div");
-        deletedAnim.className = 'yellow-confirmation';
-        document.querySelector(".pre-row").children[0].parentElement.insertBefore(deletedAnim, document.querySelector(".pre-row").children[1]);
-        document.querySelector(".yellow-confirmation").innerHTML = '<i class="icon icon-confirmation-big"></i>';
-
-        setTimeout(function(){
-          document.querySelector('.schaden-liste-row').classList.add('row-left-reverse');
-          document.querySelector('.pre-row').classList.add('schaden-delet-confirmation');
-        }, 1); 
-        
-        setTimeout(function(){
-          document.querySelector('.pre-row').remove();
-        }, 1400);
-
-      });
-
-
-
-      document.querySelector('.square-icon-repared').addEventListener('click', function() {
-
-        var reparedAnim = document.createElement("div");
-        reparedAnim.className = 'repared-confirmation';
-        document.querySelector(".pre-row").children[0].parentElement.insertBefore(reparedAnim, document.querySelector(".pre-row").children[1]);
-        document.querySelector(".repared-confirmation").innerHTML = '<i class="icon icon-confirmation-big"></i>';
-        
-        setTimeout(function(){
-        document.querySelector('.repared-confirmation').style.opacity = 1;
-        document.querySelector('.repared-confirmation').style.transform = "translateY(0)";
-        document.querySelector('.repared-confirmation').style.WebkitTransitionDuration='1s';
-
-
-        document.querySelector('.square-icon-repared').classList.add('square-icon-repared-on');
-        document.querySelector('.square-icon-no-repared').classList.remove('square-icon-no-repared-on');
-        }, 1); 
-
-        setTimeout(function(){
-          document.querySelector('.repared-confirmation').style.opacity = 0;
-          document.querySelector('.repared-confirmation').style.transform = "translateY(-20px)";
-        }, 1500);
-
-        setTimeout(function(){
-          document.querySelector('.repared-confirmation').remove();
-        }, 2200);
-
-      });
-
-      document.querySelector('.square-icon-no-repared').addEventListener('click', function() {
-        // document.querySelector('.no-repared-confirmation').style.opacity = 1;
-        // document.querySelector('.no-repared-confirmation').style.transform = "translateY(0)";
-        // document.querySelector('.no-repared-confirmation').style.WebkitTransitionDuration='1s';
-
-
-        // document.querySelector('.square-icon-no-repared').classList.add('square-icon-no-repared-on');
-        // document.querySelector('.square-icon-repared').classList.remove('square-icon-repared-on');
-        
-
-        // <div class="no-repared-confirmation">
-        // 	<i class="icon icon-confirmation-big"></i>
-        // </div>
-        // setTimeout(function(){
-        // 	document.querySelector('.no-repared-confirmation').style.opacity = 0;
-        // 	document.querySelector('.no-repared-confirmation').style.transform = "translateY(-15px)";
-        // }, 1500); 
-
-        var noReparedAnim = document.createElement("div");
-        noReparedAnim.className = 'no-repared-confirmation';
-        document.querySelector(".pre-row").children[0].parentElement.insertBefore(noReparedAnim, document.querySelector(".pre-row").children[1]);
-        document.querySelector(".no-repared-confirmation").innerHTML = '<i class="icon icon-confirmation-big"></i>';
-        
-        setTimeout(function(){
-        document.querySelector('.no-repared-confirmation').style.opacity = 1;
-        document.querySelector('.no-repared-confirmation').style.transform = "translateY(0)";
-        document.querySelector('.no-repared-confirmation').style.WebkitTransitionDuration='1s';
-
-
-        document.querySelector('.square-icon-no-repared').classList.add('square-icon-no-repared-on');
-        document.querySelector('.square-icon-repared').classList.remove('square-icon-repared-on');
-        }, 1); 
-
-        setTimeout(function(){
-          document.querySelector('.no-repared-confirmation').style.opacity = 0;
-          document.querySelector('.no-repared-confirmation').style.transform = "translateY(-20px)";
-        }, 1500);
-
-        setTimeout(function(){
-          document.querySelector('.no-repared-confirmation').remove();
-        }, 2200);
-
-      });
-
-</script>
